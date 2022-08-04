@@ -93,8 +93,10 @@ nav {
   right: 60px;
   width: 100px;
   height: auto;
-  border: 1px solid var(--very-light-pink);
-  border-radius: 6px;
+  border-bottom: 1px solid var(--very-light-pink);
+  border-left: 1px solid var(--very-light-pink);
+  border-right: 1px solid var(--very-light-pink);
+  border-radius: 0 0 6px 6px;
   padding: 20px 20px 0 20px;
 }
 .desktop-menu ul {
@@ -133,7 +135,7 @@ nav {
   border-bottom: 1px solid var(--very-light-pink);
   border-right: 1px solid var(--very-light-pink);
   border-left: 1px solid var(--very-light-pink);
-  border-radius: 6px;
+  border-radius: 0 0 6px 6px;
 }
 .mobile-menu a {
   text-decoration: none;
@@ -167,10 +169,12 @@ nav {
   padding: 0 24px 14px;
   box-sizing: border-box;
   position: absolute;
+  top: 60px;
   right: 0;
   background: var(--white);
-  border: 1px solid var(--very-light-pink);
-  border-radius: 10px;
+  border-bottom: 1px solid var(--very-light-pink);
+  border-left: 1px solid var(--very-light-pink);
+  border-radius: 0 0 10px 10px;
 }
 .title-container {
   display: flex;
