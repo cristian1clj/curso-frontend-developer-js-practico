@@ -3,7 +3,7 @@ const navEmail = document.querySelector('.navbar-email');
 const desktopMenu = document.querySelector('.desktop-menu');
 const mobileMenu = document.querySelector('.mobile-menu');
 const shoppingCartIcon = document.querySelector('.navbar-shopping-cart');
-const shoppingCartBar = document.querySelector('.product-detail');
+const shoppingCartBar = document.querySelector('#shoppingCartContainer');
 const cardsContainer = document.querySelector('.cards-container');
 
 navEmail.addEventListener('click', toggleMenu);
@@ -11,27 +11,14 @@ menuIcon.addEventListener('click', toggleMenu);
 shoppingCartIcon.addEventListener('click', toggleCartBar);
 
 function toggleMenu() {
-    const isCartClosed = shoppingCartBar.classList.contains('inactive');
-
-    if (!isCartClosed) {
-        shoppingCartBar.classList.add('inactive');
-    }
-
+    shoppingCartBar.classList.add('inactive');
     desktopMenu.classList.toggle('inactive');
     mobileMenu.classList.toggle('inactive');
 }
 
 function toggleCartBar() {
-    const isDesktopMenuClosed = desktopMenu.classList.contains('inactive');
-    const isMobileMenuClosed = mobileMenu.classList.contains('inactive');
-    
-    if (!isDesktopMenuClosed) {
-        desktopMenu.classList.add('inactive');
-    }
-    if (!isMobileMenuClosed) {
-        mobileMenu.classList.add('inactive');
-    }
-
+    desktopMenu.classList.add('inactive');
+    mobileMenu.classList.add('inactive');
     shoppingCartBar.classList.toggle('inactive');
 }
 
@@ -83,34 +70,38 @@ productList.push ({
     image: 'https://m.media-amazon.com/images/I/81k2Gmal+VL._AC_SL1500_.jpg'
 });
 
-for(product of productList) {
-    const productCard = document.createElement('div');
-    productCard.classList.add('product-card');
-    cardsContainer.appendChild(productCard);
-
-    const productImg = document.createElement('img');
-    productImg.setAttribute('src', product.image);
-    productCard.appendChild(productImg);
-
-    const productInfo = document.createElement('div');
-    productInfo.classList.add('product-info');
-    productCard.appendChild(productInfo);
-
-    const productInfoDiv = document.createElement('div');
-    productInfo.appendChild(productInfoDiv);
-
-    const productPrice = document.createElement('p');
-    productPrice.innerText = '$' + product.price;
-    productInfoDiv.appendChild(productPrice);
-
-    const productName = document.createElement('p');
-    productName.innerText = product.name;
-    productInfoDiv.appendChild(productName);
-
-    const productFigure = document.createElement('figure');
-    productInfo.appendChild(productFigure);
-
-    const addCartImg = document.createElement('img');
-    addCartImg.setAttribute('src', "./icons/bt_add_to_cart.svg");
-    productFigure.appendChild(addCartImg);
+function renderProducts(arr) {
+    for(product of arr) {
+        const productCard = document.createElement('div');
+        productCard.classList.add('product-card');
+        cardsContainer.appendChild(productCard);
+    
+        const productImg = document.createElement('img');
+        productImg.setAttribute('src', product.image);
+        productCard.appendChild(productImg);
+    
+        const productInfo = document.createElement('div');
+        productInfo.classList.add('product-info');
+        productCard.appendChild(productInfo);
+    
+        const productInfoDiv = document.createElement('div');
+        productInfo.appendChild(productInfoDiv);
+    
+        const productPrice = document.createElement('p');
+        productPrice.innerText = '$' + product.price;
+        productInfoDiv.appendChild(productPrice);
+    
+        const productName = document.createElement('p');
+        productName.innerText = product.name;
+        productInfoDiv.appendChild(productName);
+    
+        const productFigure = document.createElement('figure');
+        productInfo.appendChild(productFigure);
+    
+        const addCartImg = document.createElement('img');
+        addCartImg.setAttribute('src', "./icons/bt_add_to_cart.svg");
+        productFigure.appendChild(addCartImg);
+    }
 }
+
+renderProducts(productList);
